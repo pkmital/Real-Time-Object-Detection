@@ -37,42 +37,13 @@
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/features2d/features2d.hpp>
+
 const int CAM_WIDTH = 320;
 const int CAM_HEIGHT = 240;
 const int SCREEN_WIDTH = CAM_WIDTH*2;
 const int SCREEN_HEIGHT = CAM_HEIGHT + 75;
 
-#define NUM_MSERS 256
-#define MSER_DIM 64
 
-
-static CvScalar colors[] = 
-{
-	{{0,0,255}},
-	{{0,128,255}},
-	{{0,255,255}},
-	{{0,255,0}},
-	{{255,128,0}},
-	{{255,255,0}},
-	{{255,0,0}},
-	{{255,0,255}},
-	{{255,255,255}},
-	{{196,255,255}},
-	{{255,255,196}}
-};
-
-static uchar bcolors[][3] = 
-{
-	{0,0,255},
-	{0,128,255},
-	{0,255,255},
-	{0,255,0},
-	{255,128,0},
-	{255,255,0},
-	{255,0,0},
-	{255,0,255},
-	{255,255,255}
-};
 
 
 class testApp : public ofBaseApp {
@@ -81,8 +52,6 @@ class testApp : public ofBaseApp {
 
 	~testApp();
 	void setup();
-	
-	void computeMSERfeatures();
 	 
 	void update();
 	void draw();
@@ -96,30 +65,14 @@ class testApp : public ofBaseApp {
 	
 	ofVideoGrabber			vidInput;
 	
-	ofxCvColorImage			colorImg, hsvImg;
-	ofxCvColorImage			*mserSquares;
-	IplImage				*h, *s, *v;			// for splitting the hsv image
-	cv::SIFT				sift;
-	ofxCvColorImage			testImg;
-	ofxCvGrayscaleImage		grayImg;
-	ofxCvGrayscaleImage		testGrayImg;
-	
+	ofxCvColorImage			colorImg, testImg;
+	ofxCvGrayscaleImage		grayImg, testGrayImg;
+    
 	int						x_start, x_end, y_start, y_end;
 	bool					choosing_img, chosen_img;
 	pkmDetector				detector;
 	int						detection;
 	
-	vector<cv::KeyPoint>	keypts;
-	cv::Mat					descriptors;
-	
-	// for MSER
-	CvSeq					*contours;
-	CvMemStorage			*storage;
-	CvMSERParams			params;
-	int						num_mser_found;
-	
-	double					mserTick, ellipseTick, colorTick, keyptsTick, descTick;
-	bool					drawEllipses, drawColors;
 };
 
 #endif
