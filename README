@@ -1,8 +1,7 @@
-Simple object detection example using keypoint detection and matching.  Works in real-time with low CPU, including mobiles.  Hope it is useful for some interesting applications.  Please let me know if so and I will link your work.
+Simple object detection example using keypoint detection and matching.  Works in real-time with low CPU, including mobiles.  
 
-Thanks,
-
-Parag
+Requires openFrameworks v07 (with ofxOpenCv using OpenCV2.2+):
+http://www.openframeworks.cc/download
 
 /*
  *  Created by Parag K. Mital - http://pkmital.com 
